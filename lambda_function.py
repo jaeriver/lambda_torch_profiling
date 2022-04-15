@@ -34,7 +34,8 @@ def make_dataset():
 data = make_dataset()
 
 def lambda_handler(event, context):
-    with profile(activities=[ProfilerActivity.CPU], record_shapes=True, profile_memory=True) as prof:
+    # record_shapes=True 추가하면 input demension check 가능
+    with profile(activities=[ProfilerActivity.CPU], profile_memory=True) as prof:
         with record_function("model_inference"):
             model(data)
             
