@@ -38,7 +38,7 @@ def lambda_handler(event, context):
     with profile(activities=[ProfilerActivity.CPU], profile_memory=True) as prof:
         model(data)
             
-    res = prof.key_averages(group_by_input_shape=True).table(sort_by="cpu_time_total", row_limit=10)
+    res = prof.key_averages(group_by_input_shape=True).table(sort_by="cpu_time_total")
     print(res)
     
     return res
