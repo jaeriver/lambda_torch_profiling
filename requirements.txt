@@ -4,3 +4,5 @@ pytest
 python-dotenv
 Pillow
 requests_toolbelt
+torch==1.11.0
+torchvision
