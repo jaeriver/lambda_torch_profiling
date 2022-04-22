@@ -36,8 +36,7 @@ data = make_dataset()
 def lambda_handler(event, context):
     # record_shapes=True 추가하면 input demension check 가능
     with profile(activities=[ProfilerActivity.CPU], profile_memory=True) as prof:
-        with record_function("model_inference"):
-            model(data)
+        model(data)
             
     res = prof.key_averages(group_by_input_shape=True).table(sort_by="cpu_time_total", row_limit=10)
     print(res)
