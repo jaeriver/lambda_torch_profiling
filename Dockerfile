@@ -3,7 +3,7 @@ FROM public.ecr.aws/lambda/python:3.8-arm64
 # install essential library
 RUN yum -y install python3-dev python3-setuptools libtinfo-dev zlib1g-dev build-essential git libgomp gcc-gfortran libgfortran blas lapack atlas-sse3-devel
 
-
+RUN pip3 install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cpu
 RUN mkdir -p /var/task/lib
 # git clone
 RUN git clone https://github.com/jaeriver/lambda_torch_profiling.git
