@@ -34,6 +34,7 @@ def make_dataset():
 data = make_dataset()
 
 def lambda_handler(event, context):
+    print(*torch.__config__.show().split("\n"), sep="\n")
     # record_shapes=True 추가하면 input demension check 가능
     with profile(activities=[ProfilerActivity.CPU], profile_memory=True) as prof:
         model(data)
